@@ -74,4 +74,15 @@ public class UsuarioServiceImpl implements UsuarioService{
     public void eliminarTodosUsuarios() {
         repository.deleteAll();
     }
+
+
+    // Otros métodos
+
+    @Override
+    public boolean existeUsuario(Long id) {
+        return repository.existsById(id);
+    }
+
+
+
 }

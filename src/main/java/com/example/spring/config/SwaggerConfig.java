@@ -15,8 +15,7 @@ import java.util.Collections;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    // http://localhost:8080/swagger-ui/#/usuario-controller
-    // http://localhost:8080/swagger-ui/#/empresa-controller
+    // http://localhost:8080/swagger-ui/#/
 
     @Bean
     public Docket swaggerConfiguration(){

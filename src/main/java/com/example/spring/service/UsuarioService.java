@@ -33,4 +33,8 @@ public interface UsuarioService {
 
     public void eliminarTodosUsuarios();
 
+    // Otros métodos
+
+    public boolean existeUsuario(Long id);
+
 }
