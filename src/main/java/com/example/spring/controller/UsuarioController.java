@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequestMapping("api/")
 public class UsuarioController {
 
-    UsuarioService servicio;
+    private UsuarioService servicio;
 
     public UsuarioController(UsuarioService servicio) {
         this.servicio = servicio;
