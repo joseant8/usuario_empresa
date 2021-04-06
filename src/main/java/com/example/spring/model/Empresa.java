@@ -13,7 +13,7 @@ public class Empresa {
     private Long id;
 
     @Column(unique = true)
-    @ApiModelProperty("nombre de la empresa")
+    @ApiModelProperty("Nombre de la empresa")
     private String nombre;
 
     @ApiModelProperty("Número total de empleados en la empresa")
