@@ -53,8 +53,13 @@ public class EmpresaServiceImpl implements EmpresaService{
     // Eliminar empresa/s
 
     @Override
-    public void eliminarEmpresa(Long id) {
-        repository.deleteById(id);
+    public boolean eliminarEmpresa(Long id) {
+        if(!repository.existsById(id)){
+            return false;
+        }else{
+            repository.deleteById(id);
+            return true;
+        }
     }
 
     @Override
@@ -69,10 +74,15 @@ public class EmpresaServiceImpl implements EmpresaService{
         Optional<Empresa> empresa = repository.findById(id);
         if(empresa.isPresent()){
             Float sueldoTodosEmpleados = empresa.get().getNumEmpleados() * SUELDO;
-            Float resultado = empresa.get().getNumProductos() * empresa.get().getPrecioProducto() * empresa.get().getTiempoMercado() - sueldoTodosEmpleados;
+            Float resultado = empresa.get().getNumProductos() * empresa.get().getPrecioProducto() * empresa.get().getTiempoMercado() - sueldoTodosEmpleados * empresa.get().getTiempoMercado();
             return resultado;
         }else{
             return null;
         }
+    }
+
+    @Override
+    public boolean existeEmpresa(Long id) {
+        return repository.existsById(id);
     }
 }

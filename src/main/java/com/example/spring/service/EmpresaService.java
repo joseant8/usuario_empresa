@@ -25,11 +25,13 @@ public interface EmpresaService {
 
     // Eliminar empresa/s
 
-    public void eliminarEmpresa(Long id);
+    public boolean eliminarEmpresa(Long id);
 
     public void eliminarTodasEmpresas();
 
     // Otros métodos
 
     public Float calcularFacturacion(Long id);
+
+    public boolean existeEmpresa(Long id);
 }
