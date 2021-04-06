@@ -70,7 +70,7 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Usuario usuarioCreado = servicio.crearUsuario(usuario);
-        return ResponseEntity.created(new URI("/api/usuarios/" + usuario.getId())).body(usuarioCreado);
+        return ResponseEntity.created(new URI("/api/usuarios/" + usuarioCreado.getId())).body(usuarioCreado);
     }
 
 
