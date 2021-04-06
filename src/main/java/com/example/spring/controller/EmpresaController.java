@@ -1,7 +1,6 @@
 package com.example.spring.controller;
 
 import com.example.spring.model.Empresa;
-import com.example.spring.model.Usuario;
 import com.example.spring.service.EmpresaService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
@@ -27,6 +26,10 @@ public class EmpresaController {
     // Recuperar empresa/s
     //------------------------------------------
 
+    /**
+     * Recupera todas las empresas
+     * @return List<Empresa> lista de empresas
+     */
     @GetMapping("/empresas")
     @ApiOperation("Recupera todas las empresas.")
     public List<Empresa> recuperarEmpresas(){
@@ -34,6 +37,11 @@ public class EmpresaController {
     }
 
 
+    /**
+     * Recupera una empresa según el id
+     * @param id
+     * @return ResponseEntity<Empresa>
+     */
     @GetMapping("/empresas/{id}")
     @ApiOperation("Recupera una empresa según el id pasado por parámetro.")
     public ResponseEntity<Empresa> recuperarEmpresa(@PathVariable Long id){
@@ -44,7 +52,11 @@ public class EmpresaController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
+    /**
+     * Recupera una empresa según el nombre
+     * @param nombre
+     * @return ResponseEntity<Empresa>
+     */
     @GetMapping("/empresas/nombre/{nombre}")
     @ApiOperation("Recupera una empresa según el nombre pasado por parámetro.")
     public ResponseEntity<Empresa> recuperarEmpresaPorNombre(@PathVariable String nombre){
@@ -60,6 +72,12 @@ public class EmpresaController {
     // Crear empresa
     //------------------------------------------
 
+    /**
+     * Crea una nueva empresa
+     * @param empresa
+     * @return ResponseEntity<Empresa>
+     * @throws URISyntaxException
+     */
     @PostMapping("/empresas")
     @ApiOperation("Crea una nueva empresa.")
     public ResponseEntity<Empresa> crearEmpresa(@RequestBody Empresa empresa) throws URISyntaxException {
@@ -75,6 +93,11 @@ public class EmpresaController {
     // Actualizar empresa
     //------------------------------------------
 
+    /**
+     * Actualiza una empresa
+     * @param empresa
+     * @return ResponseEntity<Empresa>
+     */
     @PutMapping("/empresas")
     @ApiOperation("Actualiza una empresa.")
     public ResponseEntity<Empresa> actualizarEmpresa(@RequestBody Empresa empresa) {
@@ -90,6 +113,11 @@ public class EmpresaController {
     // Eliminar empresa/s
     //------------------------------------------
 
+    /**
+     * Elimina una empresa según el id
+     * @param id
+     * @return
+     */
     @DeleteMapping("/empresas/{id}")
     @ApiOperation("Elimina una empresa según el id pasado por parámetro.")
     public ResponseEntity<String> eliminarEmpresa(@PathVariable Long id){
@@ -101,6 +129,10 @@ public class EmpresaController {
     }
 
 
+    /**
+     * Elimina todas las empresas
+     * @return ResponseEntity<String>
+     */
     @DeleteMapping("/empresas")
     @ApiOperation("Elimina todas las empresas.")
     public ResponseEntity<String> eliminarTodasEmpresas() {
@@ -113,6 +145,11 @@ public class EmpresaController {
     // Calular facturación de la empresa
     //------------------------------------------
 
+    /**
+     * Calcula la facturacón de una empresa
+     * @param id
+     * @return ResponseEntity<String>
+     */
     @GetMapping("/empresas/facturacion/{id}")
     @ApiOperation("Calcula la facturacón de la empresa cuyo id se pasa por parámetro.")
     public ResponseEntity<String> calcularFacturacion(@PathVariable Long id){

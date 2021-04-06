@@ -26,12 +26,22 @@ public class UsuarioController {
     // Recuperar usuario/s
     //------------------------------------------
 
+    /**
+     * Recupera todos los usuarios
+     * @return List<Usuario> lista de usuarios
+     */
     @GetMapping("/usuarios")
     @ApiOperation("Recupera todos los usuarios.")
     public List<Usuario> recuperarUsuarios(){
         return servicio.recuperarUsuarios();
     }
 
+
+    /**
+     * Recupera un usuario según el id
+     * @param id
+     * @return ResponseEntity<Usuario>
+     */
     @GetMapping("/usuarios/{id}")
     @ApiOperation("Recupera un usuario según el id pasado por parámetro.")
     public ResponseEntity<Usuario> recuperarUsuario(@PathVariable Long id){
@@ -42,6 +52,12 @@ public class UsuarioController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+
+    /**
+     * Recupera un usuario según el nombre
+     * @param nombre
+     * @return ResponseEntity<Usuario>
+     */
     @GetMapping("/usuarios/nombre/{nombre}")
     @ApiOperation("Recupera un usuario según el nombre pasado por parámetro.")
     public ResponseEntity<Usuario> recuperarUsuarioPorNombre(@PathVariable String nombre){
@@ -52,6 +68,11 @@ public class UsuarioController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+
+    /**
+     * Recupera los usuarios que estén casados
+     * @return List<Usuario> lista filtrada de usuarios casados
+     */
     @GetMapping("/usuarios/casados")
     @ApiOperation("Recupera los usuarios que estén casados.")
     public List<Usuario> recuperarUsuariosCasados(){
@@ -63,6 +84,12 @@ public class UsuarioController {
     // Crear usuario
     //------------------------------------------
 
+    /**
+     * Crea un nuevo usuario
+     * @param usuario
+     * @return ResponseEntity<Usuario>
+     * @throws URISyntaxException
+     */
     @PostMapping("/usuarios")
     @ApiOperation("Crea un nuevo usuario.")
     public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) throws URISyntaxException{
@@ -78,6 +105,11 @@ public class UsuarioController {
     // Actualizar usuario
     //------------------------------------------
 
+    /**
+     * Actualiza un usuario
+     * @param usuario
+     * @return ResponseEntity<Usuario>
+     */
     @PutMapping("/usuarios")
     @ApiOperation("Actualiza un usuario.")
     public ResponseEntity<Usuario> actualizarUsuario(@RequestBody Usuario usuario){
@@ -93,6 +125,11 @@ public class UsuarioController {
     // Eliminar usuario/s
     //------------------------------------------
 
+    /**
+     * Elimina un usuario según el id
+     * @param id
+     * @return ResponseEntity<String>
+     */
     @DeleteMapping("/usuarios/{id}")
     @ApiOperation("Elimina un usuario según el id pasado por parámetro.")
     public ResponseEntity<String> eliminarUsuario(@PathVariable Long id){
@@ -103,6 +140,10 @@ public class UsuarioController {
         }
     }
 
+    /**
+     * Elimina todos los usuarios
+     * @return ResponseEntity<String>
+     */
     @DeleteMapping("usuarios")
     @ApiOperation("Elimina todos los usuarios.")
     public ResponseEntity<String> eliminarTodosUsuarios(){
